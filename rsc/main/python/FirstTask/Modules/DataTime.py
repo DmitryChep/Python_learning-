@@ -24,13 +24,7 @@ import top as top
 # print(today.strftime('%c'))
 # print(d.strftime('%c'))
 
-# Task 1
 
-import os
 
-for roots, dirs, files in os.walk(r'C:\Users\User\PycharmProjects\pythonProject\rsc\main\python\FirstTask\FolderTree'):
-    print(f'Path: {roots} \n'
-          f'Packages: {dirs}\n'
-          f'Files: {files} \n\n')
 
-print()
+
