@@ -1,7 +1,7 @@
 class Person:
     def __init__(self, name):
         self.name = name
-        self.__age = 30  # _var модификатор доступа: Protected(Не стого. По соглашению...)
+        self.__age = 30  # _var модификатор доступа: Protected(Не стого, по соглашению...)
         # self.__age = 30  #__var модификатор доступа: Private
 
     def proper(self):
