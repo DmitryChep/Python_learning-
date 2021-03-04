@@ -13,12 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
-from news.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
 ]
+if settings.DEBUG:  # если True то в режиме разработки(отладки)/ если False то в режиме работы на сервере
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Если в режиме разработки(Отладки), то мы используем маршрут для "возврата" фото.

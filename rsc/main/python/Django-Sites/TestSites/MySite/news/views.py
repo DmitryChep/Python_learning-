@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import News
+
 
 def index(request):
-    print(request)
-    return HttpResponse('Hello World')
-
-
-def test(request):
-    return HttpResponse('<h1>Привет Василек, все нормально ? видишь это?</h1>')
+    news = News.objects.all()
+    context = {'news': news,
+               'title': 'Список новостей'
+               } # context словарь{} с даными которые мы передаем в шаблон
+    return render(request, template_name='news/index.html', context=context)
