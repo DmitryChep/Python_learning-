@@ -19,10 +19,13 @@ is_published - Boolean
 
 class News(models.Model):
     title = models.CharField(max_length=150, verbose_name='Наименование')
-    content = models.TextField(blank=True, verbose_name='Контент')  # (blank=True) не обязательное поле для заполнения
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')  # сохраняет дату в публикации новости один раз при публикации
-    update_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')  # Дата изменяеться при обновленни(можно отслеживать изменения)
-    photo = models.ImageField(upload_to='photos/%y/%m/%d/', verbose_name='Фото', blank=True)  # разбивает фотоки по дате.Требуеться устан. модуля"Pillow"
+    content = models.TextField(blank=True, verbose_name='Контент')  # (blank=True)не обязательное поле для заполнения
+    created_at = models.DateTimeField(auto_now_add=True,
+                                      verbose_name='Дата создания')  # сохраняет дату в публикации новости один раз при публикации
+    update_at = models.DateTimeField(auto_now=True,
+                                     verbose_name='Дата обновления')  # Дата изменяеться при обновленни(можно отслеживать изменения)
+    photo = models.ImageField(upload_to='photos/%y/%m/%d/', verbose_name='Фото',
+                              blank=True)  # разбивает фотоки по дате.Требуеться устан. модуля"Pillow"
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
@@ -36,7 +39,8 @@ class News(models.Model):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=150, verbose_name='Категория', db_index=True)  # db_index=True Индексирует поле, более быстрое для поиска.
+    title = models.CharField(max_length=150, verbose_name='Категория',
+                             db_index=True)  # db_index=True Индексирует поле, более быстрое для поиска.
 
     def __str__(self):
         return self.title
